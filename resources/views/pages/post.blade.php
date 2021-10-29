@@ -100,7 +100,7 @@
                 </div>
                 <div class="card card-body">
                     <code>
-                        fetch('https://jsonplaceholder.typicode.com/todos/1')<br/>
+                        fetch('https://apis-7thdec.herokuapp.com/api/{{Auth::user()->user_name}}/posts')<br/>
                         .then(response => response.json())<br/>
                         .then(json => console.log(json))<br/>
                     </code>
