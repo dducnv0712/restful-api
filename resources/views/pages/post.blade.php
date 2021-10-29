@@ -99,7 +99,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="card card-body">
+                <div class="card card-body mb-3">
                     <code>
                         fetch('https://apis-7thdec.herokuapp.com/api/{{Auth::user()->user_name}}/posts')<br/>
                         .then(response => response.json())<br/>
