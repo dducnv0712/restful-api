@@ -18,7 +18,7 @@ class PostController extends Controller
         //
         try{
         $user_id = User::where('user_name',$user_name)->first();
-        return PostResource::collection(Post::where('user_id',$user_id->id)->get());
+        return Post::where('user_id',$user_id->id)->get();
         }catch(\Exception $e){
             return response()->json([
                 'message' => $e->getMessage(),
