@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Post;
@@ -22,19 +23,19 @@ class WebController extends Controller
             'posts'=>$posts,
         ]);
     }
-    public function create_post(Request $request){
+    public function create_post(Request $request,$username){
 
         try{
-            $auth_id = Auth::user()->id;
-            $auth_username = Auth::user()->user_name;
+
+            $user_id = User::where('user_name',$username)->first();
             $post = new Post([
                 'image'=>$request->get('image'),
                 'title'=>$request->get('title'),
                 'description' => $request->get('description'),
-                'user_id' => $auth_id->id,
+                'user_id' => $user_id->id,
             ]);
             $post->save();
-            return redirect()->to($auth_username.'/posts');
+            return redirect()->to($user_id->user_name.'/posts');
         }catch (\Exception $e){
 
         }
