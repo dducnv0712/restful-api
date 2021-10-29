@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PostResource;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
@@ -10,18 +11,14 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index($user_name)
     {
         //
         try{
         $user_id = User::where('user_name',$user_name)->first();
-        $posts = Post::where('user_id',$user_id->id)->get();
-        return response()->json([
-            "status" => 200,
-            "posts" =>$posts,
-        ]);
+        return PostResource::collection(Post::where('user_id',$user_id->id)->get());
         }catch(\Exception $e){
             return response()->json([
                 'message' => $e->getMessage(),
