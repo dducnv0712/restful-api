@@ -25,7 +25,6 @@ class PostController extends Controller
             ]);
         }
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -79,11 +78,7 @@ class PostController extends Controller
         //
         try{
         $user_id = User::where('user_name',$user_name)->first();
-        $post = Post::where('user_id',$user_id->id)->where('id',$id)->first();
-        return response()->json([
-            'status'=>200,
-            'post'=>$post
-        ]);
+        return Post::where('user_id',$user_id->id)->where('id',$id)->first();
         }catch(\Exception $e){
             return response()->json([
                 'message' => $e->getMessage(),

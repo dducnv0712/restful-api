@@ -16,11 +16,7 @@ class StudentController extends Controller
     {
         //
         $user_id = User::where('user_name',$user_name)->first();
-        $students = Student::where('user_id',$user_id->id)->get();
-        return response()->json([
-            "status" => 200,
-            "s$students" =>$students,
-        ]);
+        return Student::where('user_id',$user_id->id)->get();
     }
 
     /**
