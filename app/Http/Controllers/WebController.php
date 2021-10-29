@@ -14,6 +14,7 @@ class WebController extends Controller
     public function index(){
         return view('home');
     }
+    //Post Page
     public function post(){
         $auth_id = Auth::user()->id;
         $posts = Post::where('user_id',$auth_id)->get();
@@ -21,6 +22,50 @@ class WebController extends Controller
             'posts'=>$posts,
         ]);
     }
+    public function create_post(Request $request){
+
+        try{
+            $auth_id = Auth::user()->id;
+            $auth_username = Auth::user()->user_name;
+            $post = new Post([
+                'image'=>$request->get('image'),
+                'title'=>$request->get('title'),
+                'description' => $request->get('description'),
+                'user_id' => $auth_id->id,
+            ]);
+            $post->save();
+            return redirect()->to($auth_username.'/posts');
+        }catch (\Exception $e){
+
+        }
+    }
+    public function update_post(Request $request,$id){
+
+        try{
+            $auth_id = Auth::user()->id;
+            $auth_username = Auth::user()->user_name;
+            $post = Post::findOrFail($id);
+            $post->update([
+                'image'=>$request->get('image'),
+                'title'=>$request->get('title'),
+                'description' => $request->get('description'),
+                'user_id' => $auth_id->id,
+            ]);
+            return redirect()->to($auth_username.'/posts');
+        }catch (\Exception $e){
+
+        }
+    }
+    public function delete_post($id){
+        try{
+            $post = Post::findOrFail($id);
+            $post->delete();
+        }catch (\Exception $e){
+
+        }
+
+    }
+
     public function product(){
         return view('pages.product');
     }

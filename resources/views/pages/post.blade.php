@@ -4,7 +4,7 @@
         <div class="py-4">
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">ALL POSTS</h1>
+                    <h1 class="h4">API POSTS</h1>
                 </div>
                 <div>
                     <button type="button" class="btn btn-outline-gray-600 d-inline-flex align-items-center"
@@ -15,7 +15,7 @@
                          aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
-                                <form method="post" action="{{url('api/'.Auth::user()->user_name.'/posts')}}" class="row g-3 needs-validation container" novalidate>
+                                <form method="post" action="{{url('api/'.Auth::user()->user_name.'/posts/create')}}" class="row g-3 needs-validation container" novalidate>
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="create_post">Create New A Post</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -62,7 +62,7 @@
             <div class="col-md-12">
 
                 <div class="card mt-5 mb-3">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+                    <div class="card-header">{{ __('List Posts') }}</div>
 
                     <div class="card-body">
                         <table class="table table-hover">
