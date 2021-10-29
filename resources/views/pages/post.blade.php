@@ -15,7 +15,7 @@
                          aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
-                                <form method="post" action="{{url('api/'.Auth::user()->user_name.'/posts/create')}}" class="row g-3 needs-validation container" novalidate>
+                                <form method="post" action="{{url(Auth::user()->user_name.'/posts/create')}}" class="row g-3 needs-validation container" novalidate>
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="create_post">Create New A Post</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
