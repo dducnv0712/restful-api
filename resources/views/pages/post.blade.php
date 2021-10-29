@@ -91,7 +91,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center">Empty ¯\_(ツ)_/¯</td>
+                                    <td colspan="5" class="text-center">Empty ¯\_(ツ)_/¯</td>
                                 </tr>
                             @endforelse
                             </tbody>
