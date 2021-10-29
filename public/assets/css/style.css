@@ -3,3 +3,12 @@
 body{
     font-family: 'Be Vietnam Pro', sans-serif;
 }
+
+.image-preview{
+    width:60px;
+}
+.image-preview img{
+    width:100%;
+    height:auto;
+    object-fit: contain;
+}
